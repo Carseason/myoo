@@ -1,0 +1,16 @@
+{
+    "Port": ":8080",
+    "Runmode": "dev",
+    "ServerRender": true,
+    "Db": {
+        "Uname": "root",
+        "Pass": "pass",
+        "Table": "myoo",
+        "Addr": "127.0.0.1:3306"
+    },
+    "Redis": {
+        "Addr": "127.0.0.1:6379",
+        "Pass": ""
+    },
+    "Key": "Myoo-123456789"
+}
