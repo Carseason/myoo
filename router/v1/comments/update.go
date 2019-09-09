@@ -52,11 +52,11 @@ func (*Comments) Post(router *gin.Context) {
 	if v := comments.Insert(&models.Comments{
 		Posts: &models.Posts{
 			Id: id,
-			Author: &models.User{
-				Id: auth.Id,
-			},
-			Content: ReplaceEmoji(content),
 		},
+		Author: &models.User{
+			Id: uid,
+		},
+		Content: ReplaceEmoji(content),
 	}); v > 0 {
 		defer redis.DelAll("Myoo/Comments/" + router.Param("id") + "/*")
 		router.JSON(200, gin.H{"success": 200, "message": "评论成功", "data": v})

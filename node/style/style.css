@@ -147,12 +147,12 @@ footer.account .body {
     display: none;
 }
 
-
-
 .posts-content img {
     max-width: 100%;
 }
-
+.box-code img,.ad img{
+    max-width: 100%;
+}
 
     
 /**************进入动画************/
