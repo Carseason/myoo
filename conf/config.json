@@ -4,7 +4,7 @@
     "ServerRender": true,
     "Db": {
         "Uname": "root",
-        "Pass": "pass",
+        "Pass": "",
         "Table": "myoo",
         "Addr": "127.0.0.1:3306"
     },

@@ -1,8 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');//引入webpack
-const htmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -22,17 +21,28 @@ module.exports = {
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
-
             filename: "style.css",
             chunkFilename: '[id].css',
             ignoreOrder: false,
         }),
     ],
     resolve: {
+        modules: ["/node_modules"],    //绝对路径引用npm包
         alias: {
             "@": path.join(__dirname, "./"),
             "vue$": "vue/dist/vue.min.js",  //修改vue包导入路径
         }
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false,
+                // cache: '/node_modules/.cache/terser-webpack-plugin',
+                cache: false,
+
+            }),
+        ],
     },
     module: {    //用于配置第三方模块
         rules: [//所有第三方模块的匹配规则

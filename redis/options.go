@@ -119,7 +119,7 @@ func GetOptionsComments() *Comments {
 func GetOptionsAd() Ad {
 	this := Ad{}
 	value := GetOptionsValue("Ad")
-	json.Unmarshal([]byte(value), this)
+	json.Unmarshal([]byte(value), &this)
 	return this
 }
 

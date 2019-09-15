@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="row">
         <ul class="statistics-item">
             <li class="statistics-list">
                 <div class="statistics-schedule">

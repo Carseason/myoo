@@ -21,6 +21,7 @@ import "@/style/style.css";
 /*******************组件*******************/
 import navpage from "@/modules/navpage.vue"
 import loading from "@/modules/loading.vue"
+import load from "@/modules/load.vue"
 import message from "@/modules/message.vue"
 import carousel from "@/modules/carousel.vue"
 import box from "@/modules/box.vue"
@@ -28,9 +29,9 @@ import user from "@/modules/user.vue"
 import widget from "@/modules/widget.vue"
 import navmenus from "@/modules/navmenus.vue"
 import checkcode from "@/modules/checkcode.vue"
-import comments from "@/desktop/comments/comments.vue"
 Vue.component('navpage', navpage)
 Vue.component('loading', loading)
+Vue.component('load', load)
 Vue.component('message', message)
 Vue.component('myoo-carousel', carousel)
 Vue.component('myoo-box', box)
@@ -38,7 +39,7 @@ Vue.component('myoo-user', user)
 Vue.component('myoo-widget', widget)
 Vue.component('myoo-navmenus', navmenus)
 Vue.component('myoo-checkcode', checkcode)
-Vue.component('myoo-comments', comments)
+
 
 /*******************过滤器*******************/
 Vue.filter("dateForm", function (time) {

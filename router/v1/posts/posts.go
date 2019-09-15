@@ -123,7 +123,7 @@ func (*Posts) views(id, views int64) int64 {
 		posts.Increase_Views(id)
 	}
 	if views%100 == 0 {
-		posts.Update_Views(id, views)
+		posts.Update_Views(id, views+1)
 	}
 	return views
 }

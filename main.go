@@ -18,7 +18,9 @@ import (
 	"myoo/router/v1/index"
 	"myoo/router/v1/menus"
 	"myoo/router/v1/posts"
+	"myoo/router/v1/recommend"
 	"myoo/router/v1/sign"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -32,6 +34,7 @@ func init() {
 }
 
 func main() {
+
 	/*******************Gin初始化*******************/
 	r := gin.New()
 	r.Use(FilterXsrf(), FilterJwt())
@@ -49,6 +52,7 @@ func main() {
 		RouterSign(rest)      //登录
 		RouterAccount(rest)   //个人中心
 		RouterPosts(rest)     //文章
+		RouterRecommend(rest) //推荐文章
 		RouterDownload(rest)  //下载
 		RouterComments(rest)  //评论
 		RouterAdmin(rest)     //管理页面
@@ -62,6 +66,7 @@ func main() {
 	/*******************静态文件夹*******************/
 	r.Static("/src", "src")
 	r.Run(plugins.GetConfig().GetPort())
+
 }
 
 /**************************************
@@ -107,6 +112,12 @@ func RouterFollowers(rest *gin.RouterGroup) {
 /*******************分类*******************/
 func RouterCategory(rest *gin.RouterGroup) {
 	rest.GET("/category/:id/:page", new(category.Category).Get)
+	return
+}
+
+/*******************推荐文章*******************/
+func RouterRecommend(rest *gin.RouterGroup) {
+	rest.GET("/recommend/:id", new(recommend.Recommend).Get)
 	return
 }
 
@@ -211,7 +222,7 @@ func RouterAdmin(rest *gin.RouterGroup) {
 /*******************模板*******************/
 func RouterViews(rest *gin.Context) {
 	rest.HTML(200, "index.html", gin.H{
-		"title": "Main website",
+		"t": time.Now().Unix(),
 	})
 	return
 }
@@ -239,6 +250,7 @@ func FilterCheckCode() gin.HandlerFunc {
 		router.Next()
 		return
 	}
+
 }
 
 /*******************JWT处理*******************/

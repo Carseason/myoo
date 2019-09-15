@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="row">
         <form class="row" method="post" @submit.prevent="Update()">
             <template v-for="(value,i) in BoxItems">
                 <ul class="row-list" :key="i">
@@ -323,5 +323,12 @@ h2.list-title {
     width: 100px;
     text-align: center;
     cursor: pointer;
+}
+</style>
+<style scoped>
+@media (max-width: 600px) {
+	.list-f {
+		    max-width: 100%;
+	}
 }
 </style>

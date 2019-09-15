@@ -30,7 +30,6 @@ func (*Inc) Get(this *gin.Context) {
 		template.Ad = redis.GetOptionsAd()
 		redis.PutStruct(cachePath, &template, 7200)
 	}
-
 	this.JSON(200, gin.H{"success": 200, "message": nil, "data": template})
 	return
 }

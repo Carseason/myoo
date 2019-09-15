@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="row">
         <form class="row" method="post" @submit.prevent="Update()">
             <h1 class="row-title">用户信息</h1>
 

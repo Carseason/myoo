@@ -60,8 +60,9 @@ func (*Favorite) Count_User(id int64) int64 {
 func (*Favorite) Query_User(id int64, number, page int64) []Posts {
 	o := orm.NewOrm()
 	all := []Favorite{}
-	o.QueryTable("Favorite").Filter("Author", id).OrderBy("-Id").Limit(number, page).Distinct().RelatedSel("Posts").All(&all)
+	o.QueryTable("Favorite").Filter("Author", id).OrderBy("-Id").Limit(number, page).Distinct().RelatedSel("Posts", "Posts__Author", "Posts__Category").All(&all)
 	dbValue := []Posts{}
+
 	for v := range all {
 		dbValue = append(dbValue, *all[v].Posts)
 	}

@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="row">
         <h1 class="row-title">
             <router-link to="/admin/user/0">新建用户</router-link>
         </h1>

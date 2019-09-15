@@ -3,22 +3,11 @@ package account
 import (
 	"myoo/models"
 	"myoo/plugins"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Favorite struct{}
-
-type Favoriteer struct {
-	Id        int64
-	Date      time.Time
-	Title     string
-	Type      string
-	Thumbnail string
-	Category  *models.Category
-	Status    bool
-}
 
 func (this *Favorite) Get(router *gin.Context) {
 	page := plugins.StringtoInt64(router.Param("page"))
@@ -47,20 +36,4 @@ func (*Favorite) pages(router *gin.Context, page int64) {
 	DbValue := favorite.Query_User(uid, num, offset)
 	template := plugins.CheckPostsAll(DbValue)
 	router.JSON(200, gin.H{"success": 200, "message": nil, "data": template})
-}
-
-func DbPostsToFavorite(value []models.Posts) []Favoriteer {
-	all := []Favoriteer{}
-	for v := range value {
-		all = append(all, Favoriteer{
-			Id:        value[v].Id,
-			Date:      value[v].Date,
-			Title:     value[v].Title,
-			Type:      value[v].Type,
-			Thumbnail: plugins.CheckThumbnail(value[v].Thumbnail),
-			Status:    true,
-			Category:  value[v].Category,
-		})
-	}
-	return all
 }

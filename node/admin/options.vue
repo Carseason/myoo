@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="row">
         <form class="row" method="post" @submit.prevent="Update()">
             <ul class="row-list">
                 <h2 class="list-title">网站配置</h2>
@@ -404,5 +404,12 @@ button.button {
 }
 button:hover {
     opacity: 0.9;
+}
+</style>
+<style scoped>
+@media (max-width: 600px) {
+	.list-f {
+		    max-width: 100%;
+	}
 }
 </style>

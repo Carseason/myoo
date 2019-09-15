@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rwo">
         <template v-for="value in Posts">
             <li class="my-posts-list" :key="value.Id">
                 <div>

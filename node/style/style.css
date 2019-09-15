@@ -59,6 +59,16 @@ p {
     display: flex;
     flex-wrap: wrap;
 }
+.ad {
+    margin: 10px auto;
+}
+.ad img {
+    max-width: 100%;
+}
+
+.row {
+    width: 100%;
+}
 p.message{
     text-align: center;
     margin: 10px 0;
@@ -82,13 +92,7 @@ select,textarea{
     outline: none;
 }
 
-.ad {
-    margin: 10px 0;
-}
 
-.ad img {
-    max-width: 100%;
-}
 button.gz {
     background: #00a1d6;
     color: #fff;
@@ -105,12 +109,10 @@ button.gz {
 }
 
 
-header.author,
-header.account,
-header.sign,
-header.posts,
-header.download {
+.filling {
+    width: 100%;
     height: 110px;
+    display: block;
 }
 header.author .myoo-navmnus_bg,
 header.author .myoo-navmnus_mask,
@@ -150,49 +152,49 @@ footer.account .body {
 .posts-content img {
     max-width: 100%;
 }
-.box-code img,.ad img{
-    max-width: 100%;
-}
 
-    
+
+
 /**************进入动画************/
 .transitions-enter-active {
-    position: fixed;
-    animation: transitions .2s;
-    top:0;
-    bottom:0;
+    animation: transitions .4s;
 }
 /**************离开动画************/
 .transitions-leave-active {
-    position: fixed;
-    animation: transitionsOut .2s;
-    top:0;
-    bottom:0;
+    animation: transitionsOut .4s;
 }
 @keyframes transitions {
     0% {
-        right:-100%;
+        margin-right: -100%;
     }
     50% {
-        right:-50%;
+        margin-right: -50%;
     }
 
     100% {
-        right:0;
+        margin-right: 0;
     }
 }
 
 @keyframes transitionsOut {
     0% {
-        left: 0;
+        margin-left: 0;
     }
     50% {
-        left:-50%;
+        margin-left: -50%;
     }
+
     100% {
-        left:-100%;
+        margin-left: -100%;
     }
 }
+
+
+
+
+
+
+
 
 /**************抖动动画************/
 @-moz-keyframes tada{
@@ -241,3 +243,24 @@ footer.account .body {
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
 } */
+
+
+
+
+
+/********mobule*******/
+@media (max-width:1300px){
+    .body{
+        max-width: 1080px;
+    }
+}
+@media (max-width:1100px){
+    .body{
+        max-width: 800px;
+    }
+}
+@media (max-width:900px){
+    .body{
+        max-width: 600px;
+    }
+}

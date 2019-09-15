@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="row">
         <template v-for="value in Users">
             <li class="my-posts-list" :key="value.Id">
                 <div>

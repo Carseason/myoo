@@ -1,5 +1,5 @@
 <template>
-    <div id="admin">
+    <div class="body">
         <div class="bg"></div>
         <transition name="transitions" appear>
             <router-view></router-view>
@@ -209,6 +209,10 @@ export default {
 .bg {
     width: 100%;
     height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     z-index: -1;
     position: fixed;
     background-image: linear-gradient(
@@ -230,21 +234,14 @@ export default {
     padding: 5px;
 }
 ul.admin-ul {
-    max-width: 1300px;
     width: 100%;
     height: 100px;
     margin: 0 auto;
     position: fixed;
     z-index: 99;
     bottom: 20px;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    -ms-flex-wrap: nowrap;
     display: flex;
     flex-wrap: nowrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
     overflow-x: auto;
     overflow-y: hidden;
 }

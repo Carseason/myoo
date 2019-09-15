@@ -105,8 +105,5 @@ export default new Vuex.Store({
                 }
             });
         },
-        gz: (state, val) => {
-
-        }
     }
 })
