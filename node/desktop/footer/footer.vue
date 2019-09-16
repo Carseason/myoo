@@ -38,7 +38,9 @@
 export default {
 	methods: {
 		BackTop: function () {
-			//返回顶部
+            //返回顶部
+            window.pageYOffset = 0 ;
+            document.body.scrollTop =0;
 			document.documentElement.scrollTop = 0;
 		}
 	}

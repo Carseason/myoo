@@ -38,8 +38,8 @@ module.exports = {
         minimizer: [
             new TerserPlugin({
                 extractComments: false,
-                // cache: '/node_modules/.cache/terser-webpack-plugin',
-                cache: false,
+                cache: '/node_modules/.cache/terser-webpack-plugin',
+                //cache: false,
 
             }),
         ],

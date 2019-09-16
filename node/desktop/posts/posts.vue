@@ -231,7 +231,7 @@ h1.posts-title {
 }
 
 .posts-content {
-	min-height: 150px;
+	/* min-height: 150px; */
 	font-size: 16px;
 	line-height: 1.8;
 	color: #555;

@@ -14,13 +14,10 @@ import Admin_Users from "@/admin/users.vue"
 import Admin_Users_Page from "@/admin/users_page.vue"
 import Admin_Group from "@/admin/group.vue"
 import Admin_ModifyPosts from "@/admin/modifyposts.vue"
-import Admin_Theme from "@/admin/theme.vue"
 export default {
     path: '/admin/', component: Admin_Index, name: "admin", children: [
         { path: 'statistics', component: Admin_Statistics, name: "admin" },
         { path: 'modifyposts/:id', component: Admin_ModifyPosts, name: "admin" },
-        { path: 'theme', component: Admin_Theme, name: "admin" },
-
         { path: 'options', component: Admin_Options, name: "admin" },
         { path: 'category', component: Admin_Category, name: "admin" },
         { path: 'menus', component: Admin_Menus, name: "admin" },

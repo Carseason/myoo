@@ -20,7 +20,6 @@ import (
 	"myoo/router/v1/posts"
 	"myoo/router/v1/recommend"
 	"myoo/router/v1/sign"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -221,9 +220,7 @@ func RouterAdmin(rest *gin.RouterGroup) {
 
 /*******************模板*******************/
 func RouterViews(rest *gin.Context) {
-	rest.HTML(200, "index.html", gin.H{
-		"t": time.Now().Unix(),
-	})
+	rest.HTML(200, "index.html", gin.H{})
 	return
 }
 
@@ -233,6 +230,8 @@ func RouterViews(rest *gin.Context) {
 /*******************Xssrf处理*******************/
 func FilterXsrf() gin.HandlerFunc {
 	return func(router *gin.Context) {
+		router.Header("Access-Control-Allow-Headers", "*")
+		router.Header("Access-Control-Allow-Origin", "*")
 		router.Next()
 	}
 }

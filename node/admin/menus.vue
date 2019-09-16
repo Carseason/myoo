@@ -7,7 +7,7 @@
 					<div class="list-f">菜单设置</div>
 					<div class="list-c"></div>
 					<div class="list-r">
-						<i class="add" title="增加" @click="Menus.TopMenus.push({Icon:'',Title:'',Url:'/',Child:[]})">+</i>
+						<i class="add" title="增加" @click="Menus.TopMenus.push({Icon:'',Title:'',Url:'',Child:[]})">+</i>
 					</div>
 				</li>
 				<template v-for="(item,i) in Menus.TopMenus">
@@ -16,16 +16,12 @@
 						<div class="list-c">
 							<input class="input c" type="text" placeholder="图标class" v-model.trim="item.Icon" />
 							<input class="input c" type="text" placeholder="名称" v-model.trim="item.Title" />
-							<select class="select c" v-model.number="item.Url">
-								<option value="/">首页</option>
-								<template v-for="item in CategoryAll">
-									<option :value="'/category/' + item.Id + '/1'" :key="item.Id">{{item.Name}}</option>
-								</template>
-							</select>
+							<input class="input c" type="text" placeholder="链接URL,目前只支持内链" v-model.trim="item.Url" />
 						</div>
 						<div class="list-r">
-							<i class="add" title="增加" @click="item.Child.push({Title:'',Url:''})">+</i>
+							<i class="add" title="增加" @click="Menus.TopMenus.splice(i+1 ,0, {Icon:'',Title:'',Url:'',Child:[]})">+</i>
 							<i class="back" title="删除" @click="Menus.TopMenus.splice(i,1)">-</i>
+							<i class="child" title="子菜单" @click="item.Child.push({Title:'',Url:''})">=</i>
 						</div>
 					</li>
 					<template v-for="(child,j) in item.Child">
@@ -34,12 +30,7 @@
 							<div class="list-c">
 								<input class="input c" type="text" style="opacity: 0;" />
 								<input class="input c" type="text" placeholder="名称" v-model.trim="child.Title" />
-								<select class="select c" v-model.number="item.Url">
-									<option value="/">首页</option>
-									<template v-for="item in CategoryAll">
-										<option :value="'/category/' + item.Id +'/1'" :key="item.Id">{{item.Name}}</option>
-									</template>
-								</select>
+								<input class="input c" type="text" placeholder="链接URL,目前只支持内链" v-model.trim="child.Url" />
 							</div>
 							<div class="list-r">
 								<i class="back" title="删除" @click="item.Child.splice(j,1)">-</i>
@@ -55,7 +46,7 @@
 					<div class="list-f">菜单设置</div>
 					<div class="list-c"></div>
 					<div class="list-r">
-						<i class="add" title="增加" @click="Menus.NavMenus.push({Icon:'',Title:'',Url:'/',Child:[]})">+</i>
+						<i class="add" title="增加" @click="Menus.NavMenus.push({Icon:'',Title:'',Url:'',Child:[]})">+</i>
 					</div>
 				</li>
 				<template v-for="(item,i) in Menus.NavMenus">
@@ -64,16 +55,12 @@
 						<div class="list-c">
 							<input class="input c" type="text" placeholder="图标class" v-model.trim="item.Icon" />
 							<input class="input c" type="text" placeholder="名称" v-model.trim="item.Title" />
-							<select class="select c" v-model.number="item.Url">
-								<option value="/">首页</option>
-								<template v-for="item in CategoryAll">
-									<option :value="'/category/' + item.Id + '/1'" :key="item.Id">{{item.Name}}</option>
-								</template>
-							</select>
+							<input class="input c" type="text" placeholder="链接URL,目前只支持内链" v-model.trim="item.Url" />
 						</div>
 						<div class="list-r">
-							<i class="add" title="增加" @click="item.Child.push({Title:'',Url:'/'})">+</i>
+							<i class="add" title="增加" @click="Menus.NavMenus.splice(i+1 ,0, {Icon:'',Title:'',Url:'',Child:[]})">+</i>
 							<i class="back" title="删除" @click="Menus.NavMenus.splice(i,1)">-</i>
+							<i class="child" title="子菜单" @click="item.Child.push({Title:'',Url:''})">=</i>
 						</div>
 					</li>
 					<template v-for="(child,j) in item.Child">
@@ -82,12 +69,7 @@
 							<div class="list-c">
 								<input class="input c" type="text" style="opacity: 0;" />
 								<input class="input c" type="text" placeholder="名称" v-model.trim="child.Title" />
-								<select class="select c" v-model.number="child.Url">
-									<option :value="'/'">首页</option>
-									<template v-for="item in CategoryAll">
-										<option :value="'/category/' + item.Id +'/1'" :key="item.Id">{{item.Name}}</option>
-									</template>
-								</select>
+								<input class="input c" type="text" placeholder="链接URL,目前只支持内链" v-model.trim="child.Url" />
 							</div>
 							<div class="list-r">
 								<i class="back" title="删除" @click="item.Child.splice(j,1)">-</i>
@@ -238,7 +220,7 @@ li.list-list > div {
 
 .list-r {
 	flex: 0 0 100%;
-	max-width: 120px;
+	max-width: 130px;
 	overflow: hidden;
 	text-align: left;
 }
