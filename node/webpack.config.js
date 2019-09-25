@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-    mode: 'development',//开发模式development,生产模式production
+    mode: 'production',//开发模式development,生产模式production
     /*************Myoo**************** */
     entry: ["@babel/polyfill", "/go/mod/myoo/node/app.js"],
     output: { filename: 'app.js', path: "/go/mod/myoo/src/js" },
@@ -29,7 +29,7 @@ module.exports = {
         modules: ["/node_modules"],    //绝对路径引用npm包
         alias: {
             "@": path.join(__dirname, "./"),
-            "vue$": "vue/dist/vue.js",  //修改vue包导入路径
+            "vue$": "vue/dist/vue.min.js",  //修改vue包导入路径
         }
     },
     optimization: {
