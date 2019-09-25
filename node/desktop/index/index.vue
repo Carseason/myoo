@@ -38,7 +38,7 @@
 								<i class="iconfont icon-denglu2 icon-right"></i>
 							</a>
 						</div>
-						<myoo-box :posts="item.Posts" :types=" item.Widget.Enabled > 0 ?'types' :'' "></myoo-box>
+						<myoo-box :posts="item.Posts" :types=" item.Widget.Enabled > 0 ?'types' :'' " :module="item.Module"></myoo-box>
 					</div>
 					<div class="row-box_list right" v-if="item.Widget.Enabled  > 0">
 						<myoo-widget :widget="item.Widget"></myoo-widget>
@@ -248,11 +248,10 @@ h2.box_header-title {
 h2.box_header-title a.box_header-llink {
 	display: flex;
 	height: 40px;
-	line-height: 40px;
 }
 h2.box_header-title a.box_header-llink img {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	margin-right: 5px;
 }
 
@@ -260,7 +259,6 @@ h2.box_header-title span {
 	font-size: 24px;
 	font-weight: 400;
 	color: #222;
-	margin-top: 5px;
 }
 h2.box_header-title span:hover {
 	color: #00a1d6;

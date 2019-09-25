@@ -3,9 +3,10 @@ const webpack = require('webpack');//引入webpack
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-    mode: 'production',//开发模式development,生产模式production
+    mode: 'development',//开发模式development,生产模式production
     /*************Myoo**************** */
     entry: ["@babel/polyfill", "/go/mod/myoo/node/app.js"],
     output: { filename: 'app.js', path: "/go/mod/myoo/src/js" },
@@ -22,15 +23,13 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: "style.css",
-            chunkFilename: '[id].css',
-            ignoreOrder: false,
         }),
     ],
     resolve: {
         modules: ["/node_modules"],    //绝对路径引用npm包
         alias: {
             "@": path.join(__dirname, "./"),
-            "vue$": "vue/dist/vue.min.js",  //修改vue包导入路径
+            "vue$": "vue/dist/vue.js",  //修改vue包导入路径
         }
     },
     optimization: {
@@ -42,6 +41,9 @@ module.exports = {
                 //cache: false,
 
             }),
+            new OptimizeCSSAssetsPlugin(
+                {}
+            ),
         ],
     },
     module: {    //用于配置第三方模块

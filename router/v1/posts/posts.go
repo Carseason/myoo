@@ -122,7 +122,7 @@ func (*Posts) views(id, views int64) int64 {
 		redis.Put(cachePath, views, 0)
 		posts.Increase_Views(id)
 	}
-	if views%100 == 0 {
+	if views%10 == 0 {
 		posts.Update_Views(id, views+1)
 	}
 	return views

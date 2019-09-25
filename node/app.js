@@ -67,7 +67,6 @@ Vue.filter("dateForm2", function (time) {
         return null;
     }
 })
-
 Vue.filter("dateForm3", function (time) {
     if (time) {
         let dt = new Date(time);

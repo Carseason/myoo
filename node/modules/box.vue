@@ -1,5 +1,5 @@
 <template>
-	<div class="myoo-boxmodules" :class="types">
+	<div class="myoo-boxmodules" :class="types" :module="module">
 		<template v-for="value in posts">
 			<li class="row-box-modules" :key="value.Id">
 				<div class="modules-container">
@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-	props: ["posts", "types"]
+	props: ["posts", "types", "module"]
 };
 </script>
 <style scoped>
@@ -62,7 +62,12 @@ a.modules-link {
 	height: 0;
 	overflow: hidden;
 	position: relative;
+}
+.myoo-boxmodules a.modules-link {
 	padding-bottom: 50%;
+}
+.myoo-boxmodules[module="2"] a.modules-link {
+	padding-bottom: 100%;
 }
 
 img.modules-thumbnail {

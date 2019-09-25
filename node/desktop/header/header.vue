@@ -10,7 +10,7 @@
 				<div class="placeholder"></div>
 				<div class="myoo-wrapper-search">
 					<form class="wrapper-searchform" method="get" @submit.prevent="Search()">
-						<input type="text" accesskey="s" v-model.trim="S" placeholder="搜索些什么呢?" required="required" class="wrapper-search-keyword" />
+						<input type="text" accesskey="s" v-model.trim="S" placeholder="搜索些什么呢?" class="wrapper-search-keyword" />
 						<button type="submit" title="搜索" class="wrapper-search-submit">
 							<i class="iconfont icon-denglu2 icon-sousuo"></i>
 						</button>

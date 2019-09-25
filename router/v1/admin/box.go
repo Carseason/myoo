@@ -45,7 +45,7 @@ func (*Box) Post(router *gin.Context) {
 		return
 	}
 	for v := range box {
-		if box[v].Module > 1 || box[v].Module < 0 {
+		if box[v].Module > 2 || box[v].Module < 0 {
 			router.JSON(200, gin.H{"success": 403, "message": "模块数据异常", "data": nil})
 			return
 		}

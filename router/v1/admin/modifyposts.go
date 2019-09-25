@@ -82,7 +82,7 @@ func (this *ModifyPosts) Post(router *gin.Context) {
 		router.JSON(200, gin.H{"success": 403, "message": "不存在的文章", "data": nil})
 		return
 	}
-	cachePath := "Myoo/Posts/" + router.Param("id") + "/*"
+	cachePath := "Myoo/Posts/" + router.Param("id") + `(/*)?`
 	redis.DelAll(cachePath)
 	return
 }
