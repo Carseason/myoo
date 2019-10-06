@@ -33,15 +33,15 @@
 
 <script>
 export default {
-	data: function () {
+	data() {
 		return {
 			CategoryName: "",
 			Category: { Id: null, Name: null },
 			CategoryAll: []
 		};
 	},
-	mounted: function () { },
-	created: function () {
+	mounted() { },
+	created() {
 		this.$axios.get("/admin/category").then(res => {
 			if (res.data.data != null) {
 				this.CategoryAll = res.data.data;
@@ -51,7 +51,7 @@ export default {
 		});
 	},
 	methods: {
-		NewCategory: function () {
+		NewCategory() {
 			if (this.CategoryName.length == 0) {
 				this.$store.commit("msg", "分类名称不能为空");
 				return;
@@ -69,7 +69,7 @@ export default {
 				});
 			return;
 		},
-		Update: function (index, types) {
+		Update(index, types) {
 			this.$axios
 				.post("/admin/category", {
 					type: types,

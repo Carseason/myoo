@@ -199,7 +199,7 @@ export default {
 		Theme() {
 			this.$store.commit("msg", `
                 <p>主题 : Myoo - 好想告诉你</p>
-                <p>版本 : v1.1.1</p>
+                <p>版本 : v1.1.3</p>
                 <p>源码 : <a target="_blank" href="https://github.com/Carseason/myoo">戳我</a></p>
             `)
 		},

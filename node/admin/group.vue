@@ -152,7 +152,7 @@ export default {
 			Group: [],
 		}
 	},
-	created: function () {
+	created() {
 		this.$axios.all([
 			this.$axios.get('/admin/category'),
 			this.$axios.get('/admin/group')

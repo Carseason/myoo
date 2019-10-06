@@ -3,7 +3,7 @@
 		<form class="row" method="post" @submit.prevent="Update()">
 			<template v-for="(value,i) in BoxItems">
 				<ul class="row-list" :key="i">
-					<h2 class="list-title">模块 - {{ i}}</h2>
+					<h2 class="list-title">模块 - {{ value.Title}}</h2>
 					<li class="list-list">
 						<div class="list-f">模块标题</div>
 						<div class="list-c">
@@ -117,6 +117,8 @@
 						<div class="list-c">
 							<i @click="BoxItems.splice(i+1 ,0, AddBox())" class="add" title="增加">+</i>
 							<i @click="BoxItems.splice(i,1)" class="back" title="删除">-</i>
+							<i @click="ArrayTop(i)" class="top" title="往上">∧</i>
+							<i @click="ArrayBottom(i)" class="bottom" title="往下">∨</i>
 						</div>
 					</li>
 				</ul>
@@ -130,13 +132,13 @@
 </template>
 <script>
 export default {
-	data: function () {
+	data() {
 		return {
 			Category: [],
 			BoxItems: [],
 		}
 	},
-	created: function () {
+	created() {
 		this.$axios.all([
 			this.$axios.get('/admin/box'),
 			this.$axios.get('/admin/category')
@@ -149,11 +151,8 @@ export default {
 			}
 		}));
 	},
-	mounted: function () {
-
-	},
 	methods: {
-		AddBox: function () {
+		AddBox() {
 			return {
 				Title: '',
 				Icon: '',
@@ -172,7 +171,23 @@ export default {
 				Code: '',
 			}
 		},
-		Update: function () {
+		ArrayTop(i) {
+			if (i == 0) {
+				return
+			}
+			let tmp = this.BoxItems[i - 1];
+			this.$set(this.BoxItems, i - 1, this.BoxItems[i]);
+			this.$set(this.BoxItems, i, tmp);
+		},
+		ArrayBottom(i) {
+			if (i == this.BoxItems.length) {
+				return
+			}
+			let tmp = this.BoxItems[i + 1];
+			this.$set(this.BoxItems, i + 1, this.BoxItems[i]);
+			this.$set(this.BoxItems, i, tmp);
+		},
+		Update() {
 			this.$axios.post('/admin/box', {
 				data: JSON.stringify(this.BoxItems),
 			}).then(res => {
@@ -194,7 +209,6 @@ form.row {
 	height: 25px;
 	line-height: 25px;
 }
-
 .box-button > * {
 	-ms-flex-positive: 1;
 	-webkit-box-flex: 1;
@@ -303,6 +317,12 @@ li.list-list i {
 .list-c i:nth-child(2) {
 	background: #f44336;
 }
+.list-c i:nth-child(3) {
+	background: #ff8aa9;
+}
+.list-c i:nth-child(4) {
+	background: #44a7df;
+}
 li.list-list i:hover,
 .plus-btn:hover {
 	opacity: 0.9;
@@ -310,7 +330,7 @@ li.list-list i:hover,
 .list-c i {
 	-webkit-box-flex: 0;
 	flex: 0 0 100%;
-	max-width: 25%;
+	max-width: 20%;
 }
 h2.list-title {
 	background: #0085ba;

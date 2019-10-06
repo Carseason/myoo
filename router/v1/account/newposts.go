@@ -162,5 +162,5 @@ func (this *NewPosts) Post(router *gin.Context) {
 
 /***********文章略缩图提取**************/
 func extractThumbnail(value string) string {
-	return plugins.RegexFindString(value, `(https?:\/\/[^\/]+[^\.]+\.(jpg|png|gif|jpge))`)
+	return plugins.RegexFindString(value, `https?:\/\/[^\/]+[^\.]+\.(jpg|png|gif|jpge|jpeg|webp)`)
 }

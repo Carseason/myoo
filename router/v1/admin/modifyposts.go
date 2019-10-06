@@ -82,8 +82,9 @@ func (this *ModifyPosts) Post(router *gin.Context) {
 		router.JSON(200, gin.H{"success": 403, "message": "不存在的文章", "data": nil})
 		return
 	}
-	cachePath := "Myoo/Posts/" + router.Param("id") + `(/*)?`
-	redis.DelAll(cachePath)
+	cachePath := "Myoo/Posts/" + router.Param("id")
+	redis.Del(cachePath)
+	redis.DelAll(cachePath + `/*`)
 	return
 }
 
@@ -241,5 +242,5 @@ func (*ModifyPosts) delete(router *gin.Context, id int64) {
 
 /***********文章略缩图提取**************/
 func extractThumbnail(value string) string {
-	return plugins.RegexFindString(value, `(https?:\/\/[^\/]+[^\.]+\.(jpg|png|gif|jpge))`)
+	return plugins.RegexFindString(value, `https?:\/\/[^\/]+[^\.]+\.(jpg|png|gif|jpge|jpeg|webp)`)
 }

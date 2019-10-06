@@ -74,9 +74,13 @@ i.leaderboard_list_num {
 	font-weight: bolder;
 	font-style: normal;
 	margin-right: 5px;
-	background-color: #ffafc9;
+    background-color: #b8c0cc;
 }
-
+li.leaderboard_list:nth-child(1) i.leaderboard_list_num,
+li.leaderboard_list:nth-child(2) i.leaderboard_list_num,
+li.leaderboard_list:nth-child(3) i.leaderboard_list_num{
+    background-color: #ffafc9;
+}
 a.leaderboard_list_links {
 	display: -webkit-flex;
 	display: flex;

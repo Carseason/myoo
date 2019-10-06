@@ -132,7 +132,6 @@ export default {
 			let reader = new FileReader();
 			let file = e.target.files[0];
 			if (!/\.(jpg|png|jpge|jpeg)$/.test(file.name)) {
-				console.log(file.name)
 				this.$store.commit("msg", "请上传 jpg | png | jpge | jpeg 格式的图像文件");
 				return;
 			}
